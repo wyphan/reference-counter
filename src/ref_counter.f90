@@ -42,8 +42,8 @@ contains
   subroutine assign (lhs, rhs)
     class (ref_counter), intent(inout) :: lhs
     class (ref_counter), intent(in) :: rhs
-    print*, 'assign in ref_counter'
     lhs%count => rhs%count; lhs%obj => rhs%obj
+    print*, 'assign in ref_counter', lhs%count
     call lhs%grab; end subroutine
   recursive subroutine finalize_ref_counter (this)
      type(ref_counter), intent(inout) :: this
