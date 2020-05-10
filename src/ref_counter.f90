@@ -18,9 +18,12 @@ contains
   function new_ref_counter(object)
     class(hermetic), intent(in) :: object
     type(ref_counter), allocatable :: new_ref_counter
+    print*,'new_ref_counter enter'
     allocate (new_ref_counter); allocate (new_ref_counter%count, source=0)
     allocate (new_ref_counter%obj, source=object)
-    call new_ref_counter%grab; end function
+    call new_ref_counter%grab
+    print*,'new_ref_counter exit'
+ end function new_ref_counter
   subroutine grab(this)
     class(ref_counter), intent(inout) :: this
     if (associated(this%count)) then

@@ -36,7 +36,9 @@ contains
      integer(c_int),intent(in) :: id
      print*,__FILE__,__LINE__
     default_vector%id = id
+     print*,__FILE__,__LINE__
     call default_vector%register_self
+     print*,__FILE__,__LINE__
   end function
 
   type(vector) function new_vector(vec)
@@ -44,12 +46,14 @@ contains
     integer(c_int) :: new_vector_id
      print*,__FILE__,__LINE__
     new_vector = vector(cpp_new_vector(vec(1),vec(2),vec(3)))
+     print*,__FILE__,__LINE__
   end function
 
   type(vector) function duplicate(original)
     type(vector), intent(in) :: original
      print*,__FILE__,__LINE__
     duplicate = vector(cpp_new_vector(original%id))
+     print*,__FILE__,__LINE__
   end function
 
   type(vector) function sum(lhs,rhs) 

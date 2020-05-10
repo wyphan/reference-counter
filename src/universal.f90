@@ -16,7 +16,13 @@ contains
     call this%counter%release
   end subroutine
   subroutine register_self (this)
-    class(universal), intent(inout) :: this
-    this%counter = ref_counter(this)
+     class(universal), intent(inout) :: this
+     type (ref_counter), allocatable :: t
+     print*,'before ref_counter assign'
+     allocate(t)
+     t = ref_counter(this)
+     this%counter = t
+     deallocate(t)
+     print*,'after ref_counter assign'
   end subroutine
 end module
